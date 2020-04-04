@@ -14,7 +14,7 @@ import numpy as np
 
 
 # site url
-home_page = "https://www.sbalenders.com/bank-type/national-sba-lenders/page/"
+home_page = ""
 
 # number of pages on site
 pages = np.arange(1,15)
@@ -63,8 +63,3 @@ if __name__ == '__main__':
         else:
             tmp_df = main()
             tmp_df.to_csv('./scrape.csv', mode='a', header = False, index = False)
-
-df = pd.DataFrame()
-df["Bank"] = [i.get_text("h2") for i in soup.find_all("h2", {"class": "entry-title"})]
-df["Address"] = [i.get_text("p") for i in soup.find_all("p", {"class": "address"})]
-df["interest"] = [i.get_text("p") for i in soup.find_all("p", {"class": "address"})]
